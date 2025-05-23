@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookie-banner</title>
+  <style>
+    #cookieBanner {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-family: sans-serif;
+      z-index: 9999;
+    }
+    #cookieBanner button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="cookieBanner">
+  🍪 Den här webbplatsen använder cookies för att förbättra din upplevelse.
+  <button onclick="acceptCookies()">Acceptera</button>
+</div>
+
+<script>
+  function acceptCookies() {
+    document.getElementById('cookieBanner').style.display = 'none';
+    localStorage.setItem('cookiesAccepted', 'true');
+  }
+
+  window.onload = function() {
+    if (localStorage.getItem('cookiesAccepted') === 'true') {
+      document.getElementById('cookieBanner').style.display = 'none';
+    }
+  }
+</script>
+
+</body>
+</html>
